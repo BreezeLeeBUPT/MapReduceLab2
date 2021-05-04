@@ -22,6 +22,31 @@ type ExampleReply struct {
 	Y int
 }
 
+type taskType int
+const TaskTypeMap taskType = 1
+const TaskTypeReduce taskType = 2
+const TaskTypeWait taskType = 3
+const TaskTypeNone taskType = 4
+
+
+type GetTaskArgs struct {
+}
+
+type GetTaskReply struct {
+	Task taskType
+	FileName string
+	TaskNum int // may be map task num, or reduce task num
+	NReduce int
+	FileCnt int // used in reduce field, to get name of intermediate file
+}
+
+type FinishArg struct {
+	TaskNum int
+}
+
+type FinishReply struct {
+}
+
 // Add your RPC definitions here.
 
 
